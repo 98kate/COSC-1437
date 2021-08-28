@@ -1,0 +1,151 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <windows.h>
+#define UpLeftCorner char(201)
+#define BotLeftCorner char(200)
+#define UpRightCorner char(187)
+#define HorizontalLine char(205)
+#define VerticalLine char(186)
+#define BotRightCorner char(188)
+#define LeftOpener char(204)
+#define RightOpener char(185)
+using namespace std;
+
+int main()
+{
+    SetConsoleCP(437);
+    SetConsoleOutputCP(437);
+    //header
+
+    /*const char UpLeftCorner = 201;
+    const char BotLeftCorner = 200;
+    const char UpRightCorner = 187; 
+    const char BotRightCorner = 188;
+    const char HorizontalLine = 205;
+    const char VerticalLine = 186; */
+    const int SIZE = 3;
+    int max_linelength = 0;
+    int spaces = 5;
+
+
+    string mymessage = "Bottles of x developed by Kathrlyn Goldman";
+    string mymessage1 = "8/26/20 COSC 1437 Professor Simmons";
+    string mymessage2 = "This program displays lyrics to the bottles of beer song and requires the user to input the number of beverages and beverage type.";
+    string message[SIZE] = {mymessage, mymessage1, mymessage2};
+    
+    max_linelength = mymessage2.length() + spaces*2; 
+    int CenterSpace = (max_linelength-mymessage.length())/2; 
+    int LeftSpace = (max_linelength-mymessage1.length())-spaces;
+    int LeftSpace2 = (max_linelength-mymessage2.length())-spaces;
+    std::cout << UpLeftCorner;
+    std::cout << string(max_linelength,HorizontalLine);
+    std::cout << UpRightCorner << std::endl; 
+    std::cout << VerticalLine;
+    std::cout << string(CenterSpace,char(32)) << mymessage << string(CenterSpace,char(32)) << VerticalLine << std::endl;
+    std::cout << LeftOpener << string(max_linelength,HorizontalLine) << RightOpener << std::endl;
+    std::cout << VerticalLine << string(spaces,' ') << mymessage1 << string(LeftSpace,char(32)) << VerticalLine  << std::endl;
+    std::cout << VerticalLine << string(spaces,' ') << mymessage2 << string(LeftSpace2,char(32)) << VerticalLine  << std::endl;
+    std::cout << BotLeftCorner << string(max_linelength,HorizontalLine) << BotRightCorner << std::endl;
+
+    /*
+    for (int x = 0; x < SIZE+1; x++)
+    {
+        if (x == 0)
+        {
+            std::wcout << UpLeftCorner;
+            for (int line = 0; line < max_linelength; line++)
+            {
+                std::wcout << HorizontalLine;
+            }
+               std::wcout << UpRightCorner << std::endl;
+        }
+        else if (x == 1)
+        {   
+             std::wcout << VerticalLine;
+             std::cout << setw(max_linelength-5) << message[0];
+             std::cout << "     ";
+             std::wcout << VerticalLine << std::endl;
+             //std::wcout << VerticalLine;
+             std::wcout << LeftOpener;
+            for (int line = 0; line < max_linelength; line++)
+            {
+                std::wcout << HorizontalLine;
+            }
+            std::wcout << RightOpener << std::endl;
+            //std::wcout << VerticalLine << std::endl; 
+        }
+        else if (x == 2)
+        { 
+            for(int msgmax = 1; msgmax < SIZE; msgmax++)
+            {
+             std::wcout << VerticalLine; std::cout << "   " << message[msgmax]; 
+             //std::cout << setw(max_linelength);
+             std::wcout << "     ";
+             std::wcout << VerticalLine << std::endl;
+            }
+        }
+        else 
+        {
+             std::wcout << BotLeftCorner;
+            for (int line = 0; line < max_linelength; line++)
+            {
+                std::wcout << HorizontalLine;
+            }
+               std::wcout << BotRightCorner << std::endl;
+        }
+    }
+    return 0; */
+
+   /*std::cout << "e" << std::endl;
+    for (int line = 0; line < max_linelength; line++)
+    {
+        std::cout << HorizontalLine << std::endl;
+        std::cout << BotRightCorner << std::endl;
+    }*/
+   /* std::cout << test << test << "\n" << std::endl;
+    std::cout << string(20, test) << "\n" << std::endl;
+    int line_length = mymessage.length();
+    std::cout << char(201) << string(line_length + 2,char(205)) << test << "\n" << std::endl;
+    cout << char(186) << " " << mymessage << " " << char(186) <<  "\n"<< std::endl;*/
+    //header
+
+
+    int min = 1;
+    int max = 1000;
+    int inputNum = 0;
+    string Beverage = "";
+
+     std::cout << "Hello! Please enter a value between [1-1000]" << std::endl;
+     std::cin >> inputNum;
+    
+    while(inputNum < min  || inputNum > max)
+    {   
+        std::cout << "Hey! That number is invalid..Please enter a number between 1 - 1000" << std::endl;
+        std::cin >> inputNum;
+    }
+
+    std::cout << "We are going to sing " << inputNum << " bottles of something on the wall. What kind of beverage would you like to use?" << std::endl;
+    std::cin >> Beverage;
+    std::cout << "So we are going with..." << inputNum << " bottles of " << Beverage << " on the wall.\n " << std::endl;
+
+    for(inputNum; inputNum > 0; inputNum -= 1)
+    {
+        if (inputNum == 1 )
+        {
+        std::cout << inputNum << " bottle of " << Beverage << " on the wall!" << std::endl;
+        std::cout << inputNum << " bottle of " << Beverage << "!" << std::endl;
+        std::cout << "Take one down" << std::endl;
+        std::cout << "And pass it around" << std::endl;
+        std:: cout << inputNum-1 << " bottles of " << Beverage << " on the wall!\n" << std::endl;
+        }
+        else
+        {
+        std::cout << inputNum << " bottles of " << Beverage << " on the wall!" << std::endl;
+        std::cout << inputNum << " bottles of " << Beverage << "!" << std::endl;
+        std::cout << "Take one down" << std::endl;
+        std::cout << "And pass it around" << std::endl;
+        std:: cout << inputNum-1 << " bottles of " << Beverage << " on the wall!\n" << std::endl;
+        }
+    }
+}
